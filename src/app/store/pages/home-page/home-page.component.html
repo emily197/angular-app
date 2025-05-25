@@ -1,0 +1,61 @@
+<section class="relative w-full h-[80vh] bg-black">
+  <!-- Imagen de fondo -->
+  <img
+    src="./images/carousel-1.jpg"
+    alt="Banner"
+    class="absolute inset-0 w-full h-full object-cover opacity-70"
+  />
+
+  <!-- Capa oscura opcional -->
+  <div class="absolute inset-0 bg-black/50"></div>
+
+  <!-- Contenido centrado -->
+  <div class="relative z-10 flex flex-col items-center justify-center h-full text-center text-white px-4">
+    <h1 class="text-4xl md:text-6xl font-bold mb-4">Bienvenido a Nuestro Sitio</h1>
+    <p class="text-lg md:text-xl max-w-xl">Descubre contenido increíble, productos únicos y mucho más.</p>
+  </div>
+</section>
+
+
+<section class="px-4 py-12 bg-gray-50 m-12">
+  <div class="max-w-7xl mx-auto">
+    <h2 class="text-blue-800 text-3xl py-8">Productos para ti</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+      @for (prod of productsWithDiscount; track $index) {
+      <div class="flex flex-col bg-white shadow-md border border-slate-200 rounded-2xl overflow-hidden transition hover:shadow-lg">
+        <div class="h-64 overflow-hidden">
+          <img
+            [src]="prod.image"
+            alt="Apple AirPods"
+            class="w-full h-full object-cover"
+          />
+        </div>
+        <div class="p-4 flex flex-col flex-grow">
+          <div class="flex justify-between items-center mb-2">
+            <h3 class="text-lg font-semibold text-slate-800">{{ prod.name }}</h3>
+            <span class="text-cyan-600 text-lg font-bold">{{ prod.price | currency: 'PEN '}}</span>
+          </div>
+          <div class="flex justify-end item-center mb-2">
+            <span class="text-white bg-pink-500 p-2 rounded-xl text-sm font-bold">{{ prod.discount | percent }} dcto.</span>
+          </div>
+          <button
+            type="button"
+            class="mt-4 w-full py-2 px-4 bg-cyan-600 text-white text-sm font-medium rounded-lg shadow hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 transition"
+          >
+            Add to Cart
+          </button>
+        </div>
+      </div>
+
+      }
+
+
+
+
+
+
+
+    </div>
+  </div>
+</section>

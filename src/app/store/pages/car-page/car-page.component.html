@@ -1,0 +1,19 @@
+<!--
+Utilice las directivas y pipes de Angular, para presentar la tabla de Productos.
+-->
+
+<div class="p-10 bg-white dark:bg-white-900 m-12">
+  <div class="mb-4 flex flex-col justify-between gap-8 md:flex-row md:items-center">
+    <div>
+      <h6 class="font-sans antialiased font-bold text-base md:text-lg lg:text-xl text-current">{{ listTitle }}</h6>
+      <p class="font-sans antialiased text-base text-current mt-1">{{ listSubTitle }}</p>
+    </div>
+
+  </div>
+  <div class="w-full overflow-hidden rounded-lg border border-stone-200">
+    <list-product
+      [products]="productService.products()" />
+  </div>
+
+</div>
+
