@@ -1,64 +1,200 @@
-<section class="relative w-full h-[80vh] bg-black">
-  <!-- Imagen de fondo -->
-  <img
-    src="./images/carousel-1.jpg"
-    alt="Banner"
-    class="absolute inset-0 w-full h-full object-cover opacity-70"
-  />
 
-  <!-- Capa oscura opcional -->
-  <div class="absolute inset-0 bg-black/20"></div>
-
-  <!-- Contenido centrado -->
-  <div class="relative z-10 flex flex-col items-center justify-center h-full text-center text-white px-4">
-    <h1 class="text-4xl md:text-6xl font-bold mb-4">Bienvenido a Nuestro Sitio</h1>
-    <p class="text-lg md:text-xl max-w-xl">Descubre contenido increíble, productos únicos y mucho más.</p>
+<form class="max-w-sm mx-auto">
+  <div class="mb-5">
+    <label for="username-success" class="block mb-2 text-sm font-medium text-green-700 dark:text-green-500">Your name</label>
+    <input type="text" id="username-success" class="bg-green-50 border border-green-500 text-green-900 dark:text-green-400 placeholder-green-700 dark:placeholder-green-500 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-700 dark:border-green-500" placeholder="Bonnie Green">
+    <p class="mt-2 text-sm text-green-600 dark:text-green-500"><span class="font-medium">Alright!</span> Username available!</p>
   </div>
-</section>
+  <div>
+    <label for="username-error" class="block mb-2 text-sm font-medium text-red-700 dark:text-red-500">Your name</label>
+    <input type="text" id="username-error" class="bg-red-50 border border-red-500 text-red-900 placeholder-red-700 text-sm rounded-lg focus:ring-red-500 dark:bg-gray-700 focus:border-red-500 block w-full p-2.5 dark:text-red-500 dark:placeholder-red-500 dark:border-red-500" placeholder="Bonnie Green">
+    <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span class="font-medium">Oops!</span> Username already taken!</p>
+  </div>
 
 
-<section class="px-4 py-12 bg-gray-50 m-12">
-  <div class="max-w-7xl mx-auto">
-    <h2 class="text-blue-800 text-3xl py-8">Productos para ti</h2>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+  <hr>
 
-      @for (prod of productsWithDiscount; track $index) {
-      <div class="flex flex-col bg-white shadow-md border border-slate-200 rounded-2xl overflow-hidden transition hover:shadow-lg">
-        <div class="h-64 overflow-hidden">
-          <img
-            [src]="prod.image"
-            alt="Apple AirPods"
-            class="w-full h-full object-cover"
-          />
-        </div>
-        <div class="p-4 flex flex-col flex-grow">
-          <div class="flex justify-between items-center mb-2">
-            <h3 class="text-lg font-semibold text-slate-800">{{ prod.name }}</h3>
-            <span class="text-cyan-600 text-lg font-bold">{{ prod.price | currency: 'PEN '}}</span>
+  <div class="relative z-10" aria-labelledby="slide-over-title" role="dialog" aria-modal="true">
+  <!--
+    Background backdrop, show/hide based on slide-over state.
+
+    Entering: "ease-in-out duration-500"
+      From: "opacity-0"
+      To: "opacity-100"
+    Leaving: "ease-in-out duration-500"
+      From: "opacity-100"
+      To: "opacity-0"
+  -->
+  <div class="fixed inset-0 bg-gray-500/75 transition-opacity" aria-hidden="true"></div>
+
+  <div class="fixed inset-0 overflow-hidden">
+    <div class="absolute inset-0 overflow-hidden">
+      <div class="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10">
+        <!--
+          Slide-over panel, show/hide based on slide-over state.
+
+          Entering: "transform transition ease-in-out duration-500 sm:duration-700"
+            From: "translate-x-full"
+            To: "translate-x-0"
+          Leaving: "transform transition ease-in-out duration-500 sm:duration-700"
+            From: "translate-x-0"
+            To: "translate-x-full"
+        -->
+        <div class="pointer-events-auto w-screen max-w-md">
+          <div class="flex h-full flex-col overflow-y-scroll bg-white shadow-xl">
+            <div class="flex-1 overflow-y-auto px-4 py-6 sm:px-6">
+              <div class="flex items-start justify-between">
+                <h2 class="text-lg font-medium text-gray-900" id="slide-over-title">Shopping cart</h2>
+                <div class="ml-3 flex h-7 items-center">
+                  <button type="button" class="relative -m-2 p-2 text-gray-400 hover:text-gray-500">
+                    <span class="absolute -inset-0.5"></span>
+                    <span class="sr-only">Close panel</span>
+                    <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+              <div class="mt-8">
+                <div class="flow-root">
+                  <ul role="list" class="-my-6 divide-y divide-gray-200">
+                    <li class="flex py-6">
+                      <div class="size-24 shrink-0 overflow-hidden rounded-md border border-gray-200">
+                        <img src="https://tailwindcss.com/plus-assets/img/ecommerce-images/shopping-cart-page-04-product-01.jpg" alt="Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt." class="size-full object-cover">
+                      </div>
+
+                      <div class="ml-4 flex flex-1 flex-col">
+                        <div>
+                          <div class="flex justify-between text-base font-medium text-gray-900">
+                            <h3>
+                              <a href="#">Throwback Hip Bag</a>
+                            </h3>
+                            <p class="ml-4">$90.00</p>
+                          </div>
+                          <p class="mt-1 text-sm text-gray-500">Salmon</p>
+                        </div>
+                        <div class="flex flex-1 items-end justify-between text-sm">
+                          <p class="text-gray-500">Qty 1</p>
+
+                          <div class="flex">
+                            <button type="button" class="font-medium text-indigo-600 hover:text-indigo-500">Remove</button>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                    <li class="flex py-6">
+                      <div class="size-24 shrink-0 overflow-hidden rounded-md border border-gray-200">
+                        <img src="https://tailwindcss.com/plus-assets/img/ecommerce-images/shopping-cart-page-04-product-02.jpg" alt="Front of satchel with blue canvas body, black straps and handle, drawstring top, and front zipper pouch." class="size-full object-cover">
+                      </div>
+
+                      <div class="ml-4 flex flex-1 flex-col">
+                        <div>
+                          <div class="flex justify-between text-base font-medium text-gray-900">
+                            <h3>
+                              <a href="#">Medium Stuff Satchel</a>
+                            </h3>
+                            <p class="ml-4">$32.00</p>
+                          </div>
+                          <p class="mt-1 text-sm text-gray-500">Blue</p>
+                        </div>
+                        <div class="flex flex-1 items-end justify-between text-sm">
+                          <p class="text-gray-500">Qty 1</p>
+
+                          <div class="flex">
+                            <button type="button" class="font-medium text-indigo-600 hover:text-indigo-500">Remove</button>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+
+                    <!-- More products... -->
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="border-t border-gray-200 px-4 py-6 sm:px-6">
+              <div class="flex justify-between text-base font-medium text-gray-900">
+                <p>Subtotal</p>
+                <p>$262.00</p>
+              </div>
+              <p class="mt-0.5 text-sm text-gray-500">Shipping and taxes calculated at checkout.</p>
+              <div class="mt-6">
+                <a href="#" class="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-xs hover:bg-indigo-700">Checkout</a>
+              </div>
+              <div class="mt-6 flex justify-center text-center text-sm text-gray-500">
+                <p>
+                  or
+                  <button type="button" class="font-medium text-indigo-600 hover:text-indigo-500">
+                    Continue Shopping
+                    <span aria-hidden="true"> &rarr;</span>
+                  </button>
+                </p>
+              </div>
+            </div>
           </div>
-          <div class="flex justify-end item-center mb-2">
-            <span class="text-white bg-pink-500 p-2 rounded-xl text-sm font-bold">{{ prod.discount | percent }} dcto.</span>
-          </div>
-          <button
-            type="button"
-            class="mt-4 w-full py-2 px-4 bg-cyan-600 text-white text-sm font-medium rounded-lg shadow hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 transition"
-          >
-            Add to Cart
-          </button>
         </div>
       </div>
-
-      }
-
-
-
-
-
-
-
     </div>
   </div>
-</section>
+</div>
+
+<hr>
+
+<ol
+  class="relative space-y-8 before:absolute before:-ml-px before:h-full before:w-0.5 before:rounded-full before:bg-gray-200"
+>
+  <li class="relative -ms-1.5 flex items-start gap-4">
+    <span class="size-3 shrink-0 rounded-full bg-blue-600"></span>
+
+    <div class="-mt-2">
+      <time class="text-xs/none font-medium text-gray-700">12/02/2025</time>
+
+      <h3 class="text-lg font-bold text-gray-900">Kickoff</h3>
+
+      <p class="mt-0.5 text-sm text-gray-700">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga officiis tempora ipsum
+        adipisci tenetur sunt quae exercitationem sed pariatur porro!
+      </p>
+    </div>
+  </li>
+
+  <li class="relative -ms-1.5 flex items-start gap-4">
+    <span class="size-3 shrink-0 rounded-full bg-blue-600"></span>
+
+    <div class="-mt-2">
+      <time class="text-xs/none font-medium text-gray-700">15/03/2025</time>
+
+      <h3 class="text-lg font-bold text-gray-900">First Milestone</h3>
+
+      <p class="mt-0.5 text-sm text-gray-700">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga officiis tempora ipsum
+        adipisci tenetur sunt quae exercitationem sed pariatur porro!
+      </p>
+    </div>
+  </li>
+
+  <li class="relative -ms-1.5 flex items-start gap-4">
+    <span class="size-3 shrink-0 rounded-full bg-blue-600"></span>
+
+    <div class="-mt-2">
+      <time class="text-xs/none font-medium text-gray-700">24/04/2025</time>
+
+      <h3 class="text-lg font-bold text-gray-900">Launch</h3>
+
+      <p class="mt-0.5 text-sm text-gray-700">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga officiis tempora ipsum
+        adipisci tenetur sunt quae exercitationem sed pariatur porro!
+      </p>
+    </div>
+  </li>
+</ol>
+
+
+<hr>
+
+</form>
 
 <section class="bg-white lg:grid lg:h-screen lg:place-content-center dark:bg-gray-900">
   <div

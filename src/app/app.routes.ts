@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { ProductComponent } from './store/pages/internal/product/product.component';
 
 export const routes: Routes = [
   {
@@ -20,6 +21,10 @@ export const routes: Routes = [
       {
         path: 'car',
         loadChildren: () => import('./store/pages/car-page/car-page-routing.module').then(m => m.CarPageRoutingModule)
+      },
+      {
+        path: 'product',
+        component: ProductComponent
       },
       {
         path:  '**',
