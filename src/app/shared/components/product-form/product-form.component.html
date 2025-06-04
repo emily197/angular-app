@@ -1,0 +1,195 @@
+<div [formGroup]="myForm">
+
+      <div class="mb-6">
+        <input
+          formControlName="id"
+          type="hidden">
+        <div>
+          <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre</label>
+          <input
+            formControlName="name"
+            type="text"
+            placeholder="Nombre del producto"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+            @if ( formUtils.isValidField( myForm, 'name') ) {
+            <span class="form-text text-red-500 text-sm" >
+              {{ formUtils.getFieldError(myForm, "name") }}
+            </span>
+            }
+        </div>
+      </div>
+
+      <div class="grid gap-6 mb-6 md:grid-cols-2">
+        <div>
+          <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Barcode</label>
+          <input
+            formControlName="barcode"
+            type="text"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Slug">
+            @if ( formUtils.isValidField( myForm, 'barcode') ) {
+            <span class="form-text text-red-500 text-sm" >
+              {{ formUtils.getFieldError(myForm, "barcode") }}
+            </span>
+            }
+        </div>
+        <div>
+          <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Slug</label>
+          <input
+            formControlName="slug"
+            type="text"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Slug">
+            @if ( formUtils.isValidField( myForm, 'slug') ) {
+            <span class="form-text text-red-500 text-sm" >
+              {{ formUtils.getFieldError(myForm, "slug") }}
+            </span>
+            }
+        </div>
+      </div>
+      <div class="mb-6">
+        <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Imagen</label>
+        <textarea
+          formControlName="image"
+          rows="2"
+          class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          placeholder="Descripción corta del producto"></textarea>
+          @if ( formUtils.isValidField( myForm, 'image') ) {
+            <span class="form-text text-red-500 text-sm" >
+              {{ formUtils.getFieldError(myForm, "image") }}
+            </span>
+            }
+      </div>
+
+      <div class="mb-6">
+        <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Descripción corta</label>
+        <textarea
+          formControlName="shortDescription"
+          rows="2"
+          class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          placeholder="Descripción corta del producto"></textarea>
+          @if ( formUtils.isValidField( myForm, 'shortDescription') ) {
+            <span class="form-text text-red-500 text-sm" >
+              {{ formUtils.getFieldError(myForm, "shortDescription") }}
+            </span>
+            }
+      </div>
+
+      <div class="mb-6">
+        <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Descripción larga</label>
+        <textarea
+          formControlName="longDescription"
+          rows="3"
+          class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          placeholder="Descripción larga del producto"></textarea>
+        @if ( formUtils.isValidField( myForm, 'longDescription') ) {
+        <span class="form-text text-red-500 text-sm" >
+          {{ formUtils.getFieldError(myForm, "longDescription") }}
+        </span>
+        }
+      </div>
+      <div class="grid gap-6 mb-6 md:grid-cols-2">
+        <div>
+          <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Categoria</label>
+          <select
+            formControlName="categoryId"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+            <option disabled selected value="">Seleccione categoria</option>
+            <option value="FAR">Farmacia</option>
+            <option value="ZAP">Zapatos</option>
+            <option value="HOG">Hogar</option>
+            <option value="ELE">Electrico</option>
+            <option value="ACC">Accesorio</option>
+          </select>
+          @if ( formUtils.isValidField( myForm, 'categoryId') ) {
+          <span class="form-text text-red-500 text-sm" >
+            {{ formUtils.getFieldError(myForm, "categoryId") }}
+          </span>
+          }
+        </div>
+        <div>
+          <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Marca</label>
+          <select
+            formControlName="brand"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+            <option selected disabled value="">Seleccion marca</option>
+            <option value="US">United States</option>
+            <option value="CA">Canada</option>
+            <option value="FR">France</option>
+            <option value="DE">Germany</option>
+          </select>
+          @if ( formUtils.isValidField( myForm, 'brand') ) {
+          <span class="form-text text-red-500 text-sm" >
+            {{ formUtils.getFieldError(myForm, "brand") }}
+          </span>
+          }
+        </div>
+        <div>
+          <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Precio</label>
+          <input
+            formControlName="price"
+            type="number"
+            placeholder="Precio del producto"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+            @if ( formUtils.isValidField( myForm, 'price') ) {
+            <span class="form-text text-red-500 text-sm" >
+              {{ formUtils.getFieldError(myForm, "price") }}
+            </span>
+            }
+        </div>
+        <div>
+          <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Descuento</label>
+          <input
+            formControlName="discountPrice"
+            type="number"
+            placeholder="Precio del producto"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+            @if ( formUtils.isValidField( myForm, 'discountPrice') ) {
+            <span class="form-text text-red-500 text-sm" >
+              {{ formUtils.getFieldError(myForm, "discountPrice") }}
+            </span>
+            }
+        </div>
+        <div>
+          <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Costo</label>
+          <input
+            formControlName="cost"
+            type="number"
+            placeholder="Precio del producto"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+            @if ( formUtils.isValidField( myForm, 'cost') ) {
+            <span class="form-text text-red-500 text-sm" >
+              {{ formUtils.getFieldError(myForm, "cost") }}
+            </span>
+            }
+        </div>
+        <div>
+          <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Stock</label>
+          <input
+            formControlName="stock"
+            type="number"
+            placeholder="Precio del producto"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+            @if ( formUtils.isValidField( myForm, 'stock') ) {
+            <span class="form-text text-red-500 text-sm" >
+              {{ formUtils.getFieldError(myForm, "stock") }}
+            </span>
+            }
+        </div>
+        <div>
+          <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Unidad</label>
+          <select
+            formControlName="unit"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+            <option selected disabled value="">Seleccione tipo de unidad</option>
+            <option value="unit">Unidad</option>
+            <option value="kg">Kilogramo</option>
+            <option value="liters">Litros</option>
+            <option value="box">Caja</option>
+          </select>
+          @if ( formUtils.isValidField( myForm, 'unit') ) {
+          <span class="form-text text-red-500 text-sm" >
+            {{ formUtils.getFieldError(myForm, "unit") }}
+          </span>
+          }
+        </div>
+      </div>
+</div>

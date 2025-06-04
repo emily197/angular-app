@@ -1,0 +1,65 @@
+    <table class="w-full text-left ">
+      <thead class="border-b border-stone-200 bg-stone-100 text-sm font-medium text-stone-600 dark:bg-surface-dark">
+        <tr>
+          <th class="px-2.5 py-2 text-start font-medium">ID</th>
+          <th class="px-2.5 py-2 text-start font-medium">Name</th>
+          <th class="px-2.5 py-2 text-start font-medium">Category</th>
+          <th class="px-2.5 py-2 text-start font-medium">Amount</th>
+          <th class="px-2.5 py-2 text-start font-medium">Quantity</th>
+          <th class="px-2.5 py-2 text-start font-medium">Desc.</th>
+          <th class="px-2.5 py-2 text-start font-medium">Total</th>
+          <th class="px-2.5 py-2 text-start font-medium"></th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (prod of products(); track $index) {
+        <tr>
+          <td class="p-4 border-b text-white border-surface-light">
+            <a [routerLink]="['/admin/product/edit/', prod.id]">
+              <small class="font-sans antialiased text-sm text-current">{{ prod.id }}</small>
+            </a>
+          </td>
+          <td class="p-4 border-b text-white border-surface-light">
+            <div class="flex items-center gap-3">
+              <img [src]="prod.image" [alt]="prod.name" class="inline-block object-center w-11 h-11 rounded-md border border-surface-light bg-stone-100 object-contain p-1 dark:bg-surface-dark" />
+              <small class="font-sans antialiased text-sm text-current font-bold">{{ prod.name }}</small>
+            </div>
+          </td>
+          <td class="p-4 border-b text-white border-surface-light">
+            <div class="w-max">
+              <div class="relative inline-flex w-max items-center border font-sans font-medium rounded-md text-xs p-0.5 bg-green-500/10 border-transparent text-green-500 shadow-none">
+                <span class="font-sans text-current leading-none my-0.5 mx-1.5">{{ prod.categoryId | uppercase }}</span>
+              </div>
+            </div>
+          </td>
+          <td class="p-4 border-b text-white border-surface-light">
+            <small class="font-sans antialiased text-sm text-current">{{ prod.price | currency:'PEN ' : 'symbol' :'1.2-2' }}</small>
+          </td>
+          <td class="p-4 border-b text-white border-surface-light">
+            <small class="font-sans antialiased text-sm text-current">{{ prod.stock }}</small>
+          </td>
+          <td class="p-4 border-b text-white border-surface-light">
+            <small class="font-sans antialiased text-sm text-current">{{ prod.discountPrice| percent }}</small>
+          </td>
+          <td class="p-4 border-b text-white border-surface-light">
+            <small class="font-sans antialiased text-sm text-current">{{ (prod.price * prod.stock) | currency:'PEN ' : 'symbol' :'1.2-2' }}</small>
+          </td>
+          <td class="p-4 border-b text-white border-surface-light">
+            <button (click)="deleteProduct(`${prod.id}`)"
+            class="inline-grid place-items-center border align-middle select-none font-sans text-stone-50 font-medium text-center transition-all duration-300 ease-in disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-sm min-w-[38px] min-h-[38px] rounded-md bg-transparent border-transparent hover:bg-stone-200/10 hover:border-stone-600/10 shadow-none hover:shadow-none outline-none group">
+            <i class="fa-solid fa-trash"></i>
+            </button>
+          </td>
+        </tr>
+        }
+        @if( products().length == 0 ) {
+        <tr>
+          <td class="p-4 border-b border-surface-light" colspan="6">
+            sin productos
+          </td>
+        </tr>
+        }
+
+      </tbody>
+    </table>
+
