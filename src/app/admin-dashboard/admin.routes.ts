@@ -19,9 +19,16 @@ export const adminRoutes: Routes = [
       {
         path:'product/create',
         component: ProductNewComponent
+      },
+      {
+        path:'employee',
+        loadChildren: () => import('./employee/employee.routes').then(m => m.employeeRoutes)
+      },
+      {
+        path: 'extra-time',
+        loadChildren: () => import('./extra-time-month/extra-time.routes').then(m => m.extraTimeRoutes)
       }
     ]
-
   }
 
 ];

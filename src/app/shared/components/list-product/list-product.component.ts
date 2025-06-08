@@ -19,7 +19,7 @@ export class ListProductComponent {
   @Output() productDeleted = new EventEmitter<void>();
 
   deleteProduct(id: string){
-    if (confirm('¿Estás seguro de que deseas eliminar este producto?')) {
+    if (confirm('¿Estás seguro de que deseas eliminar este producto? '+ id + '?')) {
       this.productService.deleteProduct(id).subscribe({
         next: () => {
         alert('Eliminación exitosa');

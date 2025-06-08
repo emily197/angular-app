@@ -1,0 +1,70 @@
+<table class="w-full text-left border-collapse">
+  <thead class="bg-stone-100 text-sm font-medium text-stone-600 dark:bg-surface-dark border-b border-stone-200">
+    <tr>
+      <th class="px-2.5 py-2 text-start font-medium">#</th>
+      @for (col of columns; track $index) {
+      <th class="px-2.5 py-2 text-start font-medium">{{ col.label }}</th>
+      }
+      @if (actions?.length) {
+        <th class="px-2.5 py-2 text-start font-medium">Acciones</th>
+      }
+    </tr>
+  </thead>
+  <tbody>
+    @for (row of data; let i= $index; track $index) {
+    <tr class="border-b border-surface-light">
+      <td class="p-4 text-white">{{ $index + 1 }}</td>
+      @for (col of columns; track $index) {
+      <td class="p-4 text-white">
+        @switch (col.type) {
+
+          @case('image') {
+          <img [src]="row[col.field]" class="w-10 h-10 rounded-md object-cover bg-stone-200 p-1" />
+          }
+          @case('currency') {
+          <span>{{ row[col.field] | currency:'PEN':'symbol':'1.2-2' }}</span>
+          }
+          @case('percent') {
+          <span>{{ row[col.field] | percent }}</span>
+          }
+          @default {
+          <span>{{ row[col.field] }}</span>
+          }
+
+        }
+      </td>
+      }
+      @if (actions?.length) {
+      <td class="p-4 text-white space-x-2">
+        @for (action of actions; track $index) {
+          @if (action.routerLink) {
+            <a [routerLink]="action.routerLink(row)"
+              [title]="action.tooltip || ''"
+              class="inline-flex items-center justify-center w-9 h-9 rounded-md hover:bg-stone-200/10 transition">
+              <i [class]="action.icon"></i>
+            </a>
+          }
+          @else {
+          <button
+            [title]="action.tooltip || ''"
+            (click)="action.callback?.(row.id)"
+            class="inline-flex items-center justify-center w-9 h-9 rounded-md hover:bg-stone-200/10 transition">
+            <i [class]="action.icon"></i>
+          </button>
+          }
+        }
+      </td>
+      }
+    </tr>
+    }
+
+    @if (data.length === 0) {
+    <tr>
+      <td [attr.colspan]="columns.length + (actions?.length ? 1 : 0)" class="p-4 text-center text-stone-400">
+        Sin registros disponibles.
+      </td>
+    </tr>
+    }
+  </tbody>
+</table>
+
