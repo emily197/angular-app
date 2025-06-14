@@ -1,0 +1,81 @@
+<div [formGroup]="myForm">
+  <div class="grid gap-6 mb-6 md:grid-cols-2">
+    <input type="hidden" value="id"/>
+    <div>
+      <label class="block mb-2 text-sm font-medium text-gray-900">Nombre</label>
+      <input
+        formControlName="name"
+        type="text"
+        placeholder="Escriba un nombre"
+        class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-gray-700 text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none"
+      />
+      @if ( formUtils.isValidField( myForm, 'name') ) {
+      <span class="form-text text-red-500 text-sm" >
+        {{ formUtils.getFieldError(myForm, "name") }}
+      </span>
+      }
+    </div>
+    <div>
+      <label class="block mb-2 text-sm font-medium text-gray-900">Correo</label>
+      <input
+        formControlName="email"
+        type="email"
+        placeholder="Escriba un correo"
+        class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-gray-700 text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300  bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none"
+      />
+      @if ( formUtils.isValidField( myForm, 'email') ) {
+      <span class="form-text text-red-500 text-sm" >
+        {{ formUtils.getFieldError(myForm, "email") }}
+      </span>
+      }
+    </div>
+    <div>
+      <label class="block mb-2 text-sm font-medium text-gray-900">Contraseña</label>
+      <input
+        formControlName="password"
+        type="text"
+        placeholder="Escriba un password"
+        class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-gray-700 text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300  bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none"
+      />
+      @if ( formUtils.isValidField( myForm, 'password') ) {
+      <span class="form-text text-red-500 text-sm" >
+        {{ formUtils.getFieldError(myForm, "password") }}
+      </span>
+      }
+    </div>
+
+    <div>
+      <label class="block mb-2 text-sm font-medium text-gray-900">Role</label>
+     <select
+        formControlName="role"
+        class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5   dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500">
+        <option disabled selected value="">Seleccione un rol</option>
+        <option value="SUPER">Super User</option>
+        <option value="ADMIN">Administrador</option>
+      </select>
+      @if ( formUtils.isValidField( myForm, 'role') ) {
+      <span class="form-text text-red-500 text-sm" >
+        {{ formUtils.getFieldError(myForm, "role") }}
+      </span>
+      }
+    </div>
+
+    <div>
+      <label class="block mb-2 text-sm font-medium text-gray-900">Area</label>
+     <select
+        formControlName="area_id"
+        class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5   dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500">
+        <option disabled selected value="">Seleccione un rol</option>
+        @for (area of areas; track area.id) {
+          <option [value]="area.id">{{ area.name }}</option>
+        }
+      </select>
+      @if ( formUtils.isValidField( myForm, 'role') ) {
+      <span class="form-text text-red-500 text-sm" >
+        {{ formUtils.getFieldError(myForm, "area_id") }}
+      </span>
+      }
+    </div>
+
+
+</div>

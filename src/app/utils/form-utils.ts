@@ -11,12 +11,17 @@ export class FormUtils {
         case 'minlength':
           return `Mínimo de ${errors['minlength'].requiredLength} caracteres.`;
 
+        case 'maxlength':
+          return `Máximo de ${errors['maxlength'].requiredLength} caracteres.`;
+
         case 'min':
           return `Valor mínimo de ${errors['min'].min}`;
 
         case 'max':
           return `Valor máximo de ${errors['max'].max}`;
 
+        case 'email':
+          return 'Formato de correo inválido';
       }
     }
     return null;

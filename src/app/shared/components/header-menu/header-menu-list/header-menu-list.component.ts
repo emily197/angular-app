@@ -17,7 +17,8 @@ export class HeaderMenuListComponent {
     { label: 'Inicio', route: '/'},
     { label: 'Blog', route: '/blog'},
     { label: 'About', route: '/about'},
-    { label: 'Producto', route: '/admin/product'}
+    { label: 'Sign in', route: '/sign-in'}
   ];
-
 }
+
+//      { label: 'Producto', route: '/admin/product'},

@@ -1,13 +1,36 @@
 import { Routes } from "@angular/router";
-import { ProductPageComponent } from "./product-page/product-page.component";
-import { ProductEditComponent } from "./product-edit/product-edit.component";
-import { ProductNewComponent } from "./product-new/product-new.component";
+import { DashboardComponent } from "./dashboard/dashboard.component";
 
 
 export const adminRoutes: Routes = [
   {
     path: '',
+    component: DashboardComponent,
     children: [
+      {
+        path:'employee',
+        loadChildren: () => import('./employee/employee.routes').then(m => m.employeeRoutes)
+      },
+      {
+        path: 'extra-time',
+        loadChildren: () => import('./extra-time-month/extra-time.routes').then(m => m.extraTimeRoutes)
+      },
+      {
+        path: 'overtime',
+        loadChildren: () => import('./overtime/overtime.routes').then(m => m.overtimeRoutes)
+      },
+      {
+        path: 'user',
+        loadChildren: () => import('./users/user.routes').then(m => m.userRoutes)
+      }
+
+    ]
+  }
+
+];
+
+/*
+
       {
         path: 'product',
         component: ProductPageComponent
@@ -20,15 +43,4 @@ export const adminRoutes: Routes = [
         path:'product/create',
         component: ProductNewComponent
       },
-      {
-        path:'employee',
-        loadChildren: () => import('./employee/employee.routes').then(m => m.employeeRoutes)
-      },
-      {
-        path: 'extra-time',
-        loadChildren: () => import('./extra-time-month/extra-time.routes').then(m => m.extraTimeRoutes)
-      }
-    ]
-  }
-
-];
+*/

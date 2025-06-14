@@ -196,5 +196,110 @@
       "unit": "kg",
       "isActive": true
     }
+  ],
+  "employees": [
+    {
+      "id": "1",
+      "name":"Andre Soliz",
+      "status": true,
+      "area_id": 1,
+      "nro_document": "78978902",
+      "start_job": "08:00:00",
+      "end_job": "16:00:00",
+      "hours": "",
+      "ip_address": "192.168.1.1.",
+      "genero": "FEM"
+    },
+    {
+      "id": "2",
+      "name":"Maria Soliz",
+      "status": true,
+      "area_id": 1,
+      "nro_document": "78978902",
+      "start_job": "08:00:00",
+      "end_job": "16:00:00",
+      "hours": "",
+      "ip_address": "192.168.1.1.",
+      "genero": "FEM"
+    },
+    {
+      "id": "3",
+      "name":"Yinshi Flores",
+      "status": true,
+      "area_id": 1,
+      "nro_document": "78978902",
+      "start_job": "08:00:00",
+      "end_job": "16:00:00",
+      "hours": "",
+      "ip_address": "192.168.1.1.",
+      "genero": "FEM"
+    }
+  ],
+  "overtimes": [
+    {
+      "id": "1",
+      "employee_id": "1",
+      "employee": {
+        "id": "1",
+        "name":"Andre Soliz",
+        "status": true,
+        "area_id": 1,
+        "nro_document": "78978902",
+        "start_job": "08:00:00",
+        "end_job": "16:00:00",
+        "hours": "",
+        "ip_address": "192.168.1.1.",
+        "genero": "FEM"
+      },
+      "day_extra": "2024-01-01",
+      "quantity": 2,
+      "boss_id": "2",
+      "type": "extra",
+      "new_time": "2024-01-01 18:00:00"
+    },
+    {
+      "id": "2",
+      "employee_id": "2",
+      "employee": {
+        "id": "2",
+        "name":"Maria Soliz",
+        "status": true,
+        "area_id": 1,
+        "nro_document": "78978902",
+        "start_job": "08:00:00",
+        "end_job": "16:00:00",
+        "hours": "",
+        "ip_address": "192.168.1.1.",
+        "genero": "FEM"
+      },
+      "day_extra": "2024-01-02",
+      "quantity": 3,
+      "boss_id": "1",
+      "type": "extra",
+      "new_time": "2024-01-02 19:00:00"
+    },
+    {
+      "id": "3",
+      "employee_id": "1",
+      "employee": {
+        "id": "3",
+        "name":"Yinshi Flores",
+        "status": true,
+        "area_id": 1,
+        "nro_document": "78978902",
+        "start_job": "08:00:00",
+        "end_job": "16:00:00",
+        "hours": "",
+        "ip_address": "192.168.1.1.",
+        "genero": "FEM"
+      },
+      "day_extra": "2024-01-03",
+      "quantity": 1,
+      "boss_id": "2",
+      "type": "extra",
+      "new_time": "2024-01-03 17:00:00"
+    }
+
+
   ]
 }

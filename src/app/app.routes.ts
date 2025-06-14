@@ -15,11 +15,11 @@ export const routes: Routes = [
   {
     path: 'admin',
     loadChildren: () => import('./admin-dashboard/admin.routes').then((m) => m.adminRoutes),
+  },
+  {
+    path: '**',
+    loadComponent: () => import('./landing/404-page/404-page.component').then(m => m.NotFoundComponent)
   }
-
-
-
-
 ]
 
 

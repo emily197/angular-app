@@ -1,5 +1,62 @@
 <div class="w-full p-5 bg-white dark:bg-gray-900 antialiased ">
 
+<!--- inicio de modal ---->
+  <div class="block space-y-4 md:flex md:space-y-0 md:space-x-4 md:rtl:space-x-reverse">
+    <button
+      (click)="openSideModal()"
+      class="block w-full md:w-auto text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+      type="button">
+      Abrir modal lateral
+    </button>
+  </div>
+
+ @if (showSideModal) {
+ <div
+    class="fixed inset-0 z-50 flex"
+    style="background: rgba(0,0,0,0.3);"
+    (click)="closeSideModal()"
+  >
+    <div
+      class="ml-auto w-full max-w-md h-full bg-white dark:bg-gray-700 shadow-lg transform transition-transform duration-300"
+      (click)="$event.stopPropagation()"
+    >
+      <div class="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-600">
+        <h3 class="text-xl font-medium text-gray-900 dark:text-white">
+          Modal lateral derecho
+        </h3>
+        <button
+          type="button"
+          (click)="closeSideModal()"
+          class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+        >
+          <svg class="w-3 h-3" aria-hidden="true" fill="none" viewBox="0 0 14 14">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+          </svg>
+        </button>
+      </div>
+      <div class="p-4">
+        <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+          Este es un modal lateral derecho personalizado sin librerías externas.
+        </p>
+      </div>
+      <div class="flex items-center p-4 border-t border-gray-200 dark:border-gray-600">
+        <button
+          (click)="closeSideModal()"
+          type="button"
+          class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+        >Aceptar</button>
+        <button
+          (click)="closeSideModal()"
+          type="button"
+          class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+        >Cancelar</button>
+      </div>
+    </div>
+  </div>
+}
+<!----- fin de modal  --->
+
+
   <div class="p-10 bg-white m-12 dark:bg-gray-900">
     <div class="mb-4 flex flex-col justify-between gap-8 md:flex-row md:items-center">
       <div>

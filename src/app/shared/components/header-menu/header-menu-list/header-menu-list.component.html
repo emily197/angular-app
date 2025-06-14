@@ -15,12 +15,21 @@
         <span class="block text-sm text-gray-500 truncate dark:text-gray-400">bonnie...flowbite.com</span>
       </div>
 
-      <ul class="py-2">
-      @for (item of menuOptions; track item.route) {
-        <li>
-          <a [routerLink]="item.route" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white transition-colors duration-200">Dashboard</a>
-        </li>
-      }
+      <ul class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-black md:dark:bg-black dark:border-gray-700">
+      <span class="text-white">ppp</span>
+        @for (item of menuOptions; track item.route) {
+          <li>
+            <a
+              [routerLink]="item.route"
+              routerLinkActive="md:text-blue-700 md:dark:text-blue-500"
+              [routerLinkActiveOptions]="{ exact: true }"
+              class="nav-link block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent  md:p-0  transition-colors duration-200"
+              data-section="item.label"
+            >
+              {{ item.label }}
+            </a>
+          </li>
+        }
       </ul>
     </div>
   </div>
@@ -37,10 +46,18 @@
     <!-- Navigation menu -->
 <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-user">
   <ul class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-black md:dark:bg-black dark:border-gray-700">
-  @for (item of menuOptions; track item.route) {
-    <li>
-      <a [routerLink]="item.route" routerLinkActive="md:text-blue-700 md:dark:text-blue-500" class="nav-link block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent  md:p-0  transition-colors duration-200" data-section="item.label">{{ item.label }}</a>
-    </li>
-  }
+    @for (item of menuOptions; track item.route) {
+      <li>
+        <a
+          [routerLink]="item.route"
+          routerLinkActive="md:text-blue-700 md:dark:text-blue-500"
+          [routerLinkActiveOptions]="{ exact: true }"
+          class="nav-link block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent  md:p-0  transition-colors duration-200"
+          data-section="item.label"
+        >
+          {{ item.label }}
+        </a>
+      </li>
+    }
   </ul>
 </div>

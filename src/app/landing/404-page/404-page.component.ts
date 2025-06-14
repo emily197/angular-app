@@ -1,10 +1,9 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-404-page',
+  selector: 'app-not-found',
   imports: [],
   templateUrl: './404-page.component.html',
   styleUrl: './404-page.component.css',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class 404PageComponent { }
+export class NotFoundComponent  { }

@@ -8,10 +8,6 @@ export const employeeRoutes: Routes = [
       {
         path: '',
         component: EmployeeListComponent
-      },
-      {
-        path: 'save-address',
-        component: EmployeeListComponent,
       }
     ]
 

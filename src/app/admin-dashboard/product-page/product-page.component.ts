@@ -62,4 +62,17 @@ export class ProductPageComponent implements OnInit{
       });
     }
   }
+
+// ...existing code...
+showSideModal = false;
+
+openSideModal() {
+  this.showSideModal = true;
+}
+
+closeSideModal() {
+  this.showSideModal = false;
+}
+// ...existing code...
+
 }

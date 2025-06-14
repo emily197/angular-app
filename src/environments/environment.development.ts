@@ -1,6 +1,6 @@
 export const environment = {
   production: false,
   companyName: 'CompanyName',
-  apiUrl: 'http://localhost:3000'
+  apiUrl: 'http://ppcontrol-api.test/api'
 
 };
