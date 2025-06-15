@@ -35,11 +35,16 @@ export class SignInPageComponent {
 
     this.userService.login(this.form.getRawValue()).subscribe({
       next: (res) => {
+        console.log('entro aquii 1?');
         localStorage.setItem('access_token', res.access_token);
-        this.router.navigate(['/admin/dashboard']);
+        console.log('entro aquii 2?');
+        //this.router.navigate(['/admin/dashboard']);
+        this.router.navigate(['/admin/employee']);
+        console.log('entro aquii 3?');
       },
       error: () => {
         this.error = 'Credenciales incorrectas';
+        console.log('entro aquii 4?');
       },
     });
   }

@@ -7,26 +7,13 @@ export const adminRoutes: Routes = [
     path: '',
     component: DashboardComponent,
     children: [
-      {
-        path:'employee',
-        loadChildren: () => import('./employee/employee.routes').then(m => m.employeeRoutes)
-      },
-      {
-        path: 'extra-time',
-        loadChildren: () => import('./extra-time-month/extra-time.routes').then(m => m.extraTimeRoutes)
-      },
-      {
-        path: 'overtime',
-        loadChildren: () => import('./overtime/overtime.routes').then(m => m.overtimeRoutes)
-      },
-      {
-        path: 'user',
-        loadChildren: () => import('./users/user.routes').then(m => m.userRoutes)
-      }
-
+      { path: '', redirectTo: 'employee', pathMatch: 'full' },
+      { path: 'employee', loadChildren: () => import('./employee/employee.routes').then(m => m.employeeRoutes) },
+      { path: 'extra-time', loadChildren: () => import('./extra-time-month/extra-time.routes').then(m => m.extraTimeRoutes) },
+      { path: 'overtime', loadChildren: () => import('./overtime/overtime.routes').then(m => m.overtimeRoutes) },
+      { path: 'user', loadChildren: () => import('./users/user.routes').then(m => m.userRoutes) }
     ]
   }
-
 ];
 
 /*

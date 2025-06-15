@@ -6,7 +6,7 @@ import { Product } from 'src/app/interfaces/product.interface';
 
 @Component({
     selector: 'home-page',
-    imports: [CurrencyPipe, PercentPipe],
+    imports: [],
     templateUrl: './home-page.component.html'
 })
 
@@ -15,10 +15,10 @@ export default class HomePageComponent implements OnInit {
   products: Product[] = [];
 
   ngOnInit(): void {
-    this.productService.getProducts().subscribe(data => {
+    /*this.productService.getProducts().subscribe(data => {
       console.log('data =>', data)
       this.products = data
-    });
+    });*/
   }
 
 }

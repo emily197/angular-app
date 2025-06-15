@@ -22,9 +22,9 @@ export const landingRoutes: Routes = [
     path: 'sign-in',
     component: SignInPageComponent
   },
-  {
+  /*{
     path: '**',
     redirectTo: 'sign-in'
-  }
+  }*/
 
 ]
