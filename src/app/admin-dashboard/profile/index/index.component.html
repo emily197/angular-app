@@ -1,0 +1,186 @@
+<div class="w-full p-5 bg-white antialiased ">
+  <div class="p-10 bg-white m-1">
+    <div class="mb-4 flex flex-col justify-between gap-8 md:flex-row md:items-center">
+      <div>
+        <h6 class="font-sans antialiased font-bold text-slate-800 text-base md:text-lg lg:text-xl text-current">{{ listTitle }}</h6>
+        <p class="font-sans antialiased text-base text-current text-slate-700 mt-1">{{ listSubTitle }}</p>
+      </div>
+    </div>
+
+      <div class="container ps-4 pe-4">
+        <div class="flex mb-6">
+          <button
+            type="button"
+            (click)="activeFormProfile()"
+            [class]="action === 'profile' ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-600'"
+            class="w-1/2 py-2 font-semibold rounded-l-lg transition"
+          >
+            Datos del perfil
+          </button>
+          <button
+            type="button"
+            (click)="activeFormPass()"
+            [class]="action === 'passw' ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-600'"
+            class="w-1/2 py-2 font-semibold rounded-r-lg transition"
+          >
+            Contraseña
+          </button>
+        </div>
+      </div>
+
+      @if(action == 'profile') {
+      <div class="card border border-gray-200 rounded-lg shadow p-6 bg-white">
+        <form autocomplete="off" [formGroup]="myForm" (ngSubmit)="save()">
+          <div class="grid gap-6 mb-6 md:grid-cols-2">
+            <input type="hidden" value="id"/>
+            <div class="mb-4">
+              <label class="block mb-2 text-sm font-medium text-gray-900">Alias</label>
+              <input
+                formControlName="name"
+                type="text"
+                placeholder="Escriba su nombre"
+                class="block w-full rounded-lg border border-gray-300 px-3 py-2 text-gray-700 focus:border-blue-500 focus:outline-none"
+              />
+              @if ( formUtils.isValidField( myForm, 'name') ) {
+              <span class="form-text text-red-500 text-sm" >
+                {{ formUtils.getFieldError(myForm, "name") }}
+              </span>
+              }
+            </div>
+            <div class="mb-4">
+              <label class="block mb-2 text-sm font-medium text-gray-900">Nombre</label>
+              <input
+                formControlName="full_name"
+                type="text"
+                placeholder="Escriba su nombre"
+                class="block w-full rounded-lg border border-gray-300 px-3 py-2 text-gray-700 focus:border-blue-500 focus:outline-none"
+              />
+              @if ( formUtils.isValidField( myForm, 'full_name') ) {
+              <span class="form-text text-red-500 text-sm" >
+                {{ formUtils.getFieldError(myForm, "full_name") }}
+              </span>
+              }
+            </div>
+            <div>
+                <label class="block mb-2 text-sm font-medium text-gray-900">Apellido</label>
+                <input
+                  formControlName="first_name"
+                  type="text"
+                  placeholder="Escriba un alias"
+                  class="block w-full rounded-lg border border-gray-300 px-3 py-2 text-gray-700 focus:border-blue-500 focus:outline-none"
+                />
+                @if ( formUtils.isValidField( myForm, 'first_name') ) {
+                <span class="form-text text-red-500 text-sm" >
+                  {{ formUtils.getFieldError(myForm, "first_name") }}
+                </span>
+                }
+            </div>
+
+            <div>
+                <label class="block mb-2 text-sm font-medium text-gray-900">Segundo apellido</label>
+                <input
+                  formControlName="second_last_name"
+                  type="text"
+                  placeholder="Escriba un alias"
+                  class="block w-full rounded-lg border border-gray-300 px-3 py-2 text-gray-700 focus:border-blue-500 focus:outline-none"
+                />
+                @if ( formUtils.isValidField( myForm, 'second_last_name') ) {
+                <span class="form-text text-red-500 text-sm" >
+                  {{ formUtils.getFieldError(myForm, "second_last_name") }}
+                </span>
+                }
+            </div>
+              <div>
+                <label class="block mb-2 text-sm font-medium text-gray-900">Correo</label>
+                <input
+                  formControlName="email"
+                  type="email"
+                  placeholder="Escriba un correo"
+                  class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-gray-700 text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300  bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none"
+                />
+              </div>
+              <div>
+                <label class="block mb-2 text-sm font-medium text-gray-900">Area</label>
+              <select
+                  formControlName="area_id"
+                  class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5   dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                  <option disabled selected value="">Seleccione un rol</option>
+                  @for (area of areas; track area.id) {
+                    <option [value]="area.id">{{ area.name }}</option>
+                  }
+                </select>
+              </div>
+          </div>
+
+        <button
+          type="submit"
+          [disabled]="myForm.invalid"
+          class="bg-blue-600 text-white px-4 py-2 rounded-lg transition-opacity duration-300
+            hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed">Actualizar</button>
+        </form>
+
+
+      </div>
+      }
+      @if(action == 'passw') {
+        <div class="flex justify-center">
+          <div class="card mt-7 w-full max-w-md border border-gray-200 rounded-lg shadow p-6 bg-white">
+            <form autocomplete="off" [formGroup]="myFormCredential" (ngSubmit)="savePassword()">
+              <div class="mb-4">
+                <label class="block mb-2 text-sm font-medium text-gray-900">Nueva contraseña</label>
+                <input
+                  formControlName="password"
+                  type="password"
+                  placeholder="Nueva contraseña"
+                  class="block w-full rounded-lg border border-gray-300 px-3 py-2 text-gray-700 focus:border-blue-500 focus:outline-none"
+                />
+                @if ( formUtils.isValidField( myFormCredential, 'password') ) {
+                <span class="form-text text-red-500 text-sm" >
+                  {{ formUtils.getFieldError(myFormCredential, "password") }}
+                </span>
+                }
+              </div>
+              <div class="mb-4">
+                <label class="block mb-2 text-sm font-medium text-gray-900">Confirmar contraseña</label>
+                <input
+                  formControlName="password_confirmed"
+                  type="password"
+                  placeholder="Confirmar contraseña"
+                  class="block w-full rounded-lg border border-gray-300 px-3 py-2 text-gray-700 focus:border-blue-500 focus:outline-none"
+                />
+                @if ( formUtils.isValidField( myFormCredential, 'password_confirmed') ) {
+                <span class="form-text text-red-500 text-sm" >
+                  {{ formUtils.getFieldError(myFormCredential, "password_confirmed") }}
+                </span>
+                }
+                @if(myFormCredential.hasError('passwordMismatch') && myFormCredential.get('password_confirmed')?.touched) {
+                  <span class="text-red-500 text-xs">
+                    Las contraseñas no coinciden.
+                  </span>
+                }
+              </div>
+              <button
+                type="submit"
+                [disabled]="myFormCredential.invalid"
+                class="w-full bg-blue-600 text-white px-4 py-2 rounded-lg transition-opacity duration-300 hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed"
+              >
+                Cambiar contraseña
+              </button>
+            </form>
+          </div>
+        </div>
+      }
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+</div>
+

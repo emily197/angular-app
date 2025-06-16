@@ -1,4 +1,6 @@
 import { Routes } from '@angular/router';
+import { NotAuthenticatedGuard } from './guards/not-authenticated.guard';
+import { AuthGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
   {
@@ -15,6 +17,13 @@ export const routes: Routes = [
   {
     path: 'admin',
     loadChildren: () => import('./admin-dashboard/admin.routes').then((m) => m.adminRoutes),
+    canMatch: [AuthGuard
+      //  () => {
+      //  console.log('guard esta aqui xd');
+      //    //return true;
+      //  },
+      // NotAuthenticatedGuard
+    ]
   },
   {
     path: '**',

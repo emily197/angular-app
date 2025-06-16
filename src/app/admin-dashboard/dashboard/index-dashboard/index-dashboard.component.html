@@ -1,0 +1,73 @@
+
+<div class="container mx-auto px-4 py-8">
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+    <div>
+      <img src="/images/icon-sun-cloud.webp" alt="">
+    </div>
+
+    <!-- Card: Fecha y hora actual -->
+    <div class="bg-white rounded-xl shadow p-6 flex flex-col items-center justify-center">
+      <div class="text-gray-500 text-sm mb-2">Fecha y hora actual</div>
+      <div class="text-2xl font-bold text-blue-700" id="currentDateTime">
+        {{ currentDate | date:'fullDate' }}<br>
+        {{ currentDate | date:'shortTime' }}
+      </div>
+    </div>
+
+    <!-- Card: Correr comando -->
+    <div class="bg-white rounded-xl shadow p-6 flex flex-col">
+      <div class="text-gray-500 text-sm mb-2">Cron</div>
+      <div class="flex gap-2">
+        @if(commandStatus){
+          <h5 class="mb-2 font-bold dark:text-emerald-900">OK</h5>
+        }@else {
+          <h5 class="mb-2 font-bold dark:text-red-600">Correr comando</h5>
+        }
+      </div>
+        <button
+          (click)="runCommand()"
+          class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition"
+        >
+          Ejecutar
+        </button>
+      @if ( commandResult ){
+      <div  class="mt-2 text-green-600 text-sm">{{ commandResult }}</div>
+      }
+    </div>
+
+  </div>
+</div>
+
+
+<div class="container mx-auto px-4 py-8">
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+
+    <!-- Card: Gráfica de horas extras mensuales -->
+    <div class="bg-white rounded-xl shadow p-6 flex flex-col">
+      <div class="text-gray-500 text-sm mb-2">Horas extras mensuales</div>
+      <!-- Aquí puedes insertar tu componente de gráfica, por ejemplo con ngx-charts o Chart.js -->
+      <canvas id="overtimeChart" height="120"></canvas>
+    </div>
+
+    <!-- Card: Cantidad de empleados a cargo -->
+    <div class="bg-white rounded-xl shadow p-6 flex flex-col items-center justify-center">
+      <div class="text-gray-500 text-sm mb-2">Empleados a tu cargo</div>
+      <div class="text-4xl font-bold text-indigo-600">{{ employeesCount }}</div>
+    </div>
+
+    <!-- Card: Listado de trabajadores -->
+    <div class="bg-white rounded-xl shadow p-6 flex flex-col">
+      <div class="text-gray-500 text-sm mb-2">Trabajadores</div>
+      <ul class="divide-y divide-gray-200">
+        @for (worker of workers; track $index) {
+        <li  class="py-2 text-gray-800 font-medium">
+          {{ worker }}
+        </li>
+        }
+      </ul>
+    </div>
+
+  </div>
+</div>

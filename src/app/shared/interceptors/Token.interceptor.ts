@@ -5,7 +5,7 @@ export const tokenInterceptor: HttpInterceptorFn = (
   req: HttpRequest<any>,
   next: HttpHandlerFn): Observable<HttpEvent<unknown>> => {
 
-  const token = localStorage.getItem('access_token');
+  const token = localStorage.getItem('token');
 
   if (token) {
     const cloned = req.clone({

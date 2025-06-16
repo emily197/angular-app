@@ -6,4 +6,7 @@ export interface User {
   role: string;
   active?: boolean;
   area_id?: number;
+  first_name?: string;
+  second_last_name?: string;
+  full_name?: string;
 }
