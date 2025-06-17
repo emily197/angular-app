@@ -7,10 +7,11 @@ import { Employee } from 'src/app/interfaces/employee.interface';
 import { SideModalComponent } from 'src/app/shared/components/side-modal/side-modal.component';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { FormUtils } from 'src/app/utils/form-utils';
+import { SearchByTextComponent } from "../../../shared/components/search-by-text/search-by-text.component";
 
 @Component({
   selector: 'app-employee-list',
-  imports: [TableGenericComponent, SideModalComponent, ReactiveFormsModule, FormsModule],
+  imports: [TableGenericComponent, SideModalComponent, ReactiveFormsModule, FormsModule, SearchByTextComponent],
   templateUrl: './employee-list.component.html',
 })
 export class EmployeeListComponent implements OnInit {

@@ -6,11 +6,12 @@ import { TableColumn } from 'src/app/interfaces/tableColumn.interface';
 import { User } from 'src/app/interfaces/user.interface';
 import { UserService } from 'src/app/services/user.service';
 import { TableGenericComponent } from 'src/app/shared/components/table-generic/table-generic.component';
+import { SearchByTextComponent } from "../../../shared/components/search-by-text/search-by-text.component";
 
 @Component({
   selector: 'app-index',
   standalone: true,
-  imports: [TableGenericComponent, RouterLink, FormsModule],
+  imports: [TableGenericComponent, RouterLink, FormsModule, SearchByTextComponent],
   templateUrl: './index.component.html',
 })
 export class IndexComponent {

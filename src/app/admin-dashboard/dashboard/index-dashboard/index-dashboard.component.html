@@ -16,49 +16,73 @@
     </div>
 
     <!-- Card: Correr comando -->
-    <div class="bg-white rounded-xl shadow p-6 flex flex-col">
-      <div class="text-gray-500 text-sm mb-2">Cron</div>
-      <div class="flex gap-2">
+    @if ( authService.user()?.role === 'SUPER') {
+    <div class="bg-white rounded-xl shadow p-6 flex flex-col items-center">
+      <div class="w-full flex items-center justify-between mb-4">
+        <span class="text-gray-500 text-sm">Cron</span>
         @if(commandStatus){
-          <h5 class="mb-2 font-bold dark:text-emerald-900">OK</h5>
+          <span class="inline-flex items-center px-2 py-1 rounded text-xs font-semibold bg-emerald-100 text-emerald-700">
+            <i class="fa-solid fa-check-circle mr-1"></i> OK
+          </span>
         }@else {
-          <h5 class="mb-2 font-bold dark:text-red-600">Correr comando</h5>
+          <span class="inline-flex items-center px-2 py-1 rounded text-xs font-semibold bg-red-100 text-red-700">
+            <i class="fa-solid fa-circle-exclamation mr-1"></i> Esperando
+          </span>
         }
       </div>
-        <button
-          (click)="runCommand()"
-          class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition"
-        >
-          Ejecutar
-        </button>
-      @if ( commandResult ){
-      <div  class="mt-2 text-green-600 text-sm">{{ commandResult }}</div>
+      <h5 class="mb-4 font-bold text-lg text-gray-800 text-center">Correr comando</h5>
+      <button
+        (click)="runCommand()"
+        class="w-full bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition font-semibold shadow-sm"
+      >
+        Ejecutar
+      </button>
+      @if (commandResult) {
+        <div class="mt-4 w-full text-center text-green-600 text-sm bg-green-50 rounded p-2 border border-green-200">
+          {{ commandResult }}
+        </div>
       }
     </div>
+    }
+
 
   </div>
 </div>
 
-
 <div class="container mx-auto px-4 py-8">
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-
-
-    <!-- Card: Gráfica de horas extras mensuales -->
-    <div class="bg-white rounded-xl shadow p-6 flex flex-col">
+  <!-- Card: Gráfica de horas extras mensuales -->
+  <div class="w-full px-2">
+    <div class="bg-white rounded-xl shadow p-6 flex flex-col w-full">
       <div class="text-gray-500 text-sm mb-2">Horas extras mensuales</div>
-      <!-- Aquí puedes insertar tu componente de gráfica, por ejemplo con ngx-charts o Chart.js -->
-      <canvas id="overtimeChart" height="120"></canvas>
+
+      <div class="w-full">
+        <ngx-charts-bar-vertical
+          [results]="rawMonthWork"
+          [xAxis]="true"
+          [yAxis]="true"
+          [legend]="false"
+          [showXAxisLabel]="true"
+          [showYAxisLabel]="true"
+          [xAxisLabel]="'Mes'"
+          [yAxisLabel]="'Horas extras'"
+          [animations]="true"
+          style="width: 100%; min-height: 250px; height: clamp(250px, 40vw, 350px);"
+        >
+        </ngx-charts-bar-vertical>
+      </div>
     </div>
+  </div>
+</div>
+
 
     <!-- Card: Cantidad de empleados a cargo -->
-    <div class="bg-white rounded-xl shadow p-6 flex flex-col items-center justify-center">
+    <!-- <div class="bg-white rounded-xl shadow p-6 flex flex-col items-center justify-center">
       <div class="text-gray-500 text-sm mb-2">Empleados a tu cargo</div>
       <div class="text-4xl font-bold text-indigo-600">{{ employeesCount }}</div>
-    </div>
+    </div> -->
 
     <!-- Card: Listado de trabajadores -->
-    <div class="bg-white rounded-xl shadow p-6 flex flex-col">
+    <!-- <div class="bg-white rounded-xl shadow p-6 flex flex-col">
       <div class="text-gray-500 text-sm mb-2">Trabajadores</div>
       <ul class="divide-y divide-gray-200">
         @for (worker of workers; track $index) {
@@ -67,7 +91,4 @@
         </li>
         }
       </ul>
-    </div>
-
-  </div>
-</div>
+    </div> -->

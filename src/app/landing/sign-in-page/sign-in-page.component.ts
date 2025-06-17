@@ -39,7 +39,7 @@ export class SignInPageComponent {
     const { email = '', password = '' } = this.form.value;
     this.authService.login(email!, password!).subscribe((isAuthenticated) => {
       if(isAuthenticated) {
-        this.router.navigate(['/admin/employee']);
+        this.router.navigate(['/admin/dashboard']);
         return;
       }
 
